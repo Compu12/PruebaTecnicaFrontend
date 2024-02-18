@@ -1,0 +1,25 @@
+<div class="container mt-5">
+  <div class="d-flex justify-content-between align-items-center">
+    <h2>Servicios</h2>
+    <button class="btn btn-success">Nuevo Servicio</button>
+  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Descripción</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody class="table-group-divider">
+      <tr *ngFor="let servicio of servicios;let i = index">
+        <th scope="row">{{i+1}}</th>
+        <td>{{servicio.nombreServicio}}</td>
+        <td>{{servicio.descripcionServicio}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+

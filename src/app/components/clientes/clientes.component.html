@@ -1,0 +1,37 @@
+<div class="container mt-5">
+  <div class="d-flex justify-content-between align-items-center">
+    <h2>Clientes</h2>
+    <button class="btn btn-success">Nuevo Cliente</button>
+  </div>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Correo</th>
+        <th scope="col">Acciones</th>
+      </tr>
+    </thead>
+    <tbody class="table-group-divider">
+      <tr *ngFor="let cliente of clientes; let i = index">
+        <th scope="row">{{i+1}}</th>
+        <td>{{cliente.nombreCliente}}</td>
+        <td>{{cliente.correoCliente}}</td>
+        <td>
+          <a class="btn btn-warning btn-sm me-1 text-white">
+          <i class="bi bi-eye-fill"></i>
+          </a>
+          <a class="btn btn-info btn-sm me-1 text-white">
+          <i class="bi bi-pencil-square"></i>
+        </a>
+        <a class="btn btn-danger btn-sm me-1">
+          <i class="bi bi-trash"></i>
+        </a>
+        <td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
