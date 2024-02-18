@@ -1,25 +1,159 @@
 <div class="container mt-5">
   <div class="d-flex justify-content-between align-items-center">
-    <h2>Servicios</h2>
-    <button class="btn btn-success">Nuevo Servicio</button>
+    <h2>Servicio</h2>
+    <button
+      class="btn btn-success"
+      data-bs-toggle="modal"
+      data-bs-target="#nuevoServicio"
+    >
+      Nuevo Servicio
+    </button>
   </div>
+
   <table class="table">
     <thead>
       <tr>
         <th scope="col">#</th>
         <th scope="col">Nombre</th>
-        <th scope="col">Descripción</th>
-        <th>Acciones</th>
+        <th scope="col">Correo</th>
+        <th scope="col">Acciones</th>
       </tr>
     </thead>
     <tbody class="table-group-divider">
-      <tr *ngFor="let servicio of servicios;let i = index">
-        <th scope="row">{{i+1}}</th>
-        <td>{{servicio.nombreServicio}}</td>
-        <td>{{servicio.descripcionServicio}}</td>
+      <tr *ngFor="let servicio of servicios; let i = index">
+        <th scope="row">{{ i + 1 }}</th>
+        <td>{{ servicio.nombreServicio }}</td>
+        <td>{{ servicio.descripcionServicio }}</td>
+        <td>
+          <a class="btn btn-info btn-sm me-1 text-white" data-bs-toggle="modal"
+             data-bs-target="#editarModalServicio" (click)="asignarServicio(servicio)">
+            <i class="bi bi-pencil-square"></i>
+        </a>
+          <a class="btn btn-danger btn-sm me-1" (click)="eliminarServicio(servicio.idServicio)">
+            <i class="bi bi-trash"></i>
+          </a>
+        </td>
+
+        <td></td>
       </tr>
     </tbody>
   </table>
 </div>
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="nuevoServicio"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+  tabindex="-1"
+  aria-labelledby="staticBackdropLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel2">Servicio</h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="nombreClienteEdit" class="form-label"
+              >Nombre Servicio</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="nombreServicioEdit"
 
+              [(ngModel)]="servicio.nombreServicio"
+               [ngModelOptions]="{standalone: true}"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="DescripcionEdit" class="form-label"
+              >Descripción</label
+            >
+            <input
+              type="email"
+              class="form-control"
+              id="DescripcionEdit"
+              [ngModelOptions]="{standalone: true}"
+              [(ngModel)]="servicio.descripcionServicio"
+            />
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Close
+        </button>
+        <button type="button" class="btn btn-primary" (click)="crearServicio()">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
 
+<div
+  class="modal fade"
+  id="editarModalServicio"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+  tabindex="-1"
+  aria-labelledby="staticBackdropLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Servicio</h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="nombreCliente" class="form-label"
+              >Nombre Servicio</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="nombreServicio"
+
+              [(ngModel)]="servicio.nombreServicio"
+               [ngModelOptions]="{standalone: true}"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="correoCliente" class="form-label"
+              >Correo</label
+            >
+            <input
+              type="email"
+              class="form-control"
+              id="descripcion"
+              [ngModelOptions]="{standalone: true}"
+              [(ngModel)]="servicio.descripcionServicio"
+            />
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Close
+        </button>
+        <button type="button" class="btn btn-primary" (click)="editarServicio()">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
