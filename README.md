@@ -16,4 +16,4 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 
 ## Cambiar la direccion url en el archivo enviroment
 
-De acuerdo a la ejecucion del Backend cambiar la url
+De acuerdo a la ejecución del Backend cambiar la url
